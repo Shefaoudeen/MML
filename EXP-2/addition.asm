@@ -17,9 +17,9 @@ start:
 
     ; add your code here 
     
-    mov ax, 1234H
+    mov cx, 1234H
     mov bx, 5678H
-    add ax,bx
+    add cx,bx
    
     
     mov ax, 4c00h ; exit to operating system.
