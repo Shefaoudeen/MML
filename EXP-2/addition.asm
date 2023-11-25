@@ -2,7 +2,6 @@
 
 data segment
     ; add your data here!
-    pkey db "press any key...$"
 ends
 
 stack segment
