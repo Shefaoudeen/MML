@@ -1,7 +1,7 @@
 include "emu8086.inc"
  
 data segment
-    array db 1h,2h,3h,4h,5h,6h
+    array db 1h,2h,3h,4h,5h,10h
     oddSum db "Sum of odd number : $"
     evenSum db "Sum of even number : $"  
     oddAvg db "Average of odd number : $" 
@@ -47,7 +47,8 @@ start:
             jmp next
             
        next:   
-        inc si 
+        inc si
+         
     loop looping
     
     xchg dl,even
@@ -60,10 +61,10 @@ start:
 
     mov ah, 00h
     mov al, [even]
-    CALL PRINT_NUM
-    lea dx, [new]
-    mov ah, 09h
-    int 21h
+    CALL PRINT_NUM 
+    
+    call printNewLine  
+    
     lea dx, [evenAvg]
     mov ah, 9
     int 21h 
@@ -73,20 +74,12 @@ start:
     div bl
     mov ah,00h
     CALL PRINT_NUM
-    
-    
+        
     jmp printOdd:  
-    
-
-  
          
-    DEFINE_PRINT_NUM
-    DEFINE_PRINT_NUM_UNS
-                    
  printOdd:   
-        lea dx, [new]
-        mov ah, 09h
-        int 21h
+        call printNewLine   
+        
         lea dx, [oddSum]
         mov ah, 9
         int 21h               
@@ -96,20 +89,32 @@ start:
         mov al, [odd]
         CALL PRINT_NUM
         
-        lea dx, [new]
-        mov ah, 09h
-        int 21h
+        call printNewLine 
+        
         lea dx, [oddAvg]
         mov ah, 9
-        int 21h
+        int 21h  
+        
         mov ah, 00h
         mov al, odd 
         mov bl,oddCount
         div bl
-        
         mov ah, 00h
-        CALL PRINT_NUM   
+        CALL PRINT_NUM 
+        hlt
+        
+        
+    printNewLine PROC 
+        lea dx, [new]
+        mov ah, 09h
+        int 21h 
+        RET
+                
+        
+    DEFINE_PRINT_NUM
+    DEFINE_PRINT_NUM_UNS  
 
     final: 
         ends
-end start
+end start   
+
