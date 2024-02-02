@@ -1,5 +1,5 @@
 data segment
-  mystr dw "ECE$"
+  mystr dw "cse$"
   str1 db "Palindrome$"
   str2 db "Not a palindrome$"
   length dw 3
