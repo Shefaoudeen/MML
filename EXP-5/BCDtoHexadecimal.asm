@@ -1,4 +1,6 @@
 data segment
+    BCD dw 1926
+    Hex dw ?
 ends
 
 code segment
@@ -9,8 +11,8 @@ start:
   
   mov bx, 0000h
   mov dh, 00h
-  
-  mov ax, 200
+                           
+  mov ax, BCD
   
 
   compare2:
@@ -36,5 +38,6 @@ start:
 
   final:
     add bx,ax
+    mov hex,bx
     ends  
 end start

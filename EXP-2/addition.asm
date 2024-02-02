@@ -1,4 +1,4 @@
-; multi-segment executable file template.
+include "emu8086.inc"
 
 data segment
     ; add your data here!
@@ -10,20 +10,21 @@ ends
 
 code segment
 start:
-; set segment registers:
     mov ax, data
     mov ds, ax
     mov es, ax
-
-    ; add your code here 
     
-    mov cx, 1234H
-    mov bx, 5678H
-    add cx,bx
-   
+    mov ax,4H
+    mov bx,8H
+    add ax,bx
+         
+    call print_num
     
-    mov ax, 4c00h ; exit to operating system.
+    define_print_num
+    define_print_num_uns                   
+    
+    mov ax, 4c00h 
     int 21h    
 ends
 
-end start ; set entry point and stop the assembler.
+end start 

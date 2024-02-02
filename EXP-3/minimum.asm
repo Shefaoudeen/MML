@@ -1,20 +1,16 @@
-; multi-segment executable file template.
 data segment
- ; add your data here!
- array DB 01h,00h,0Eh,11h,08h 
- found db 'Minimum term at the BL register$'
-
+ array DB 01h,20h,0Eh,11h,08h 
+ found db 'Minimum term = $'
 ends
 
 code segment
- assume cs:code, ds:data
+
 start:
-; set segment registers:
+
  mov ax, data
  mov ds, ax
  mov es, ax
- ; add your code here
- 
+
  mov cx, 05h
  mov bl, 79h
  lea SI, array
@@ -26,14 +22,19 @@ up:
 nxt:
  inc si
 
-loop up
+    loop up
+    
+    mov dx,offset found
+    mov ah,09h
+    int 21h 
 
-mov dx,offset found
-mov ah,09h
-int 21h 
- 
-
- mov ax, 4c00h ; exit to operating system.
+    add bl,30h
+     
+    mov dl,bl
+    mov ah,02
+    int 21h
+    
+ mov ax, 4c00h
  int 21h 
 ends
-end start ; set entry point and stop the assembler.
+end start

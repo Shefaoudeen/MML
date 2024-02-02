@@ -1,4 +1,6 @@
-data segment
+data segment  
+    Hex dw 786h
+    BCD dw ?
 ends
 
 code segment
@@ -7,10 +9,12 @@ start:
   mov ds,ax
   mov es,ax
   
-  mov bx, 0000h
-  mov dh, 00h
   
-  mov ax, 100h
+  mov cx,00
+  mov dx,00
+  
+  mov ax, Hex
+        
   
   compare1:
     cmp ax, 10000
@@ -42,5 +46,6 @@ start:
 
   final:
     add bx,ax
+    mov BCD,bx
     ends  
 end start
