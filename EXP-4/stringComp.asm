@@ -1,5 +1,5 @@
 data segment
-  msg1 db "Healo World$"
+  msg1 db "Hello World$"
   msg2 db "Hello World$"
   str1 db "Strings are equal$"
   str2 db "Strings are not equal$"
@@ -15,7 +15,7 @@ start:
   mov cl,count
   lea si, [msg1]
   lea di, [msg2]
-  rep cmpsb
+  cmpsb
 
   jnz case1
   lea dx, str1
