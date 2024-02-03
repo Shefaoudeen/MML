@@ -1,5 +1,5 @@
 data segment
-  msg1 db "Hello World$"
+  msg1 db "Healo World$"
   msg2 db "Hello World$"
   str1 db "Strings are equal$"
   str2 db "Strings are not equal$"
