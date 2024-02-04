@@ -25,7 +25,8 @@ code segment
     lea di, [newarray]
 
     looping:    
-      mov ax,[si]
+      mov al,[si]
+      mov ah,[si+1]
       cmp ax,100
       jl next
       cmp ax,1000

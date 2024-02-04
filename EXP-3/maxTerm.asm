@@ -2,8 +2,7 @@ include "emu8086.inc"
 
 data segment
  array DB 01,09,59,11,29 
- found db 'Max term = $' 
- 
+ found db 'Max term = $'  
 ends
 
 code segment
@@ -14,17 +13,17 @@ start:
  mov es, ax
  
  mov cx, 05h    
- mov bl, 00h   
+ mov bl, 00h ; arbitay max term   
  lea SI, array
-
     up:
      mov al, [SI]
      cmp al, bl
-     jl nxt      
-     mov bl, al 
-     
-    nxt:
-        inc si
+     jge exchange
+     jmp next
+     exchange:
+      mov bl,al
+      next:
+      inc si
  
  loop up ; 
  

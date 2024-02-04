@@ -11,6 +11,7 @@ start:
     mov es, ax
             
    LEA SI, ARRAY
+   
    LEA DX, MSG
    MOV AH,9
    INT 21H
@@ -20,7 +21,7 @@ start:
    MOV CX,6
    
    ADDING:
-    ADD AL,ARRAY[SI]
+    ADD AL,[SI]
     INC SI
 
     LOOP ADDING
