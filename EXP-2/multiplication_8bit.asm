@@ -3,8 +3,8 @@ include "emu8086.inc"
 code segment
 start:                   
 
-    mov bl,10
-    mov al,02
+    mov bl,2
+    mov al,55h
     mul bl          
     
     call print_num 

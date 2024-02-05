@@ -16,9 +16,9 @@ start:
     mov es, ax
 
     ; add your code here
-
-    mov ax, 50h
-    mov bl, 05h
+    mov ah,00
+    mov al, 55h
+    mov bl, 02h
     div bl 
     
     ;dividing a 8-bit numbers, will produce quotent in AL and remainder in AH
